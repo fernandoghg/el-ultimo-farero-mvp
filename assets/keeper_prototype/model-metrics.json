@@ -1,0 +1,79 @@
+{
+  "blender": "5.2.3 LTS",
+  "triangles": 15708,
+  "mesh_objects": 7,
+  "materials": [
+    "Belt_worn_leather",
+    "Boot_soles_dark",
+    "Boots_oxhide",
+    "Brass_muted",
+    "Coat_indigo_wool",
+    "Coat_worn_blue_edges",
+    "Hair_and_eyes_charcoal",
+    "Lantern_aged_iron",
+    "Lantern_amber_lens",
+    "Scarf_sand_linen",
+    "Skin_warm_peach",
+    "Trousers_umber"
+  ],
+  "material_count": 12,
+  "bounds_godot": {
+    "x": [
+      -0.414000004529953,
+      0.4520000219345093
+    ],
+    "y": [
+      0.0,
+      1.6186246871948242
+    ],
+    "z": [
+      -0.20899999141693115,
+      0.2759999632835388
+    ]
+  },
+  "dimensions_godot": [
+    0.8660000264644623,
+    1.6186246871948242,
+    0.48499995470046997
+  ],
+  "front_godot": "+Z",
+  "rig": false,
+  "animations": 0,
+  "pivots_blender": {
+    "Torso": [
+      0,
+      0,
+      0.84
+    ],
+    "Head": [
+      0,
+      0,
+      1.19
+    ],
+    "Arm_L": [
+      -0.245,
+      0.01,
+      1.09
+    ],
+    "Arm_R": [
+      0.245,
+      0.01,
+      1.09
+    ],
+    "Leg_L": [
+      -0.11,
+      0,
+      0.56
+    ],
+    "Leg_R": [
+      0.11,
+      0,
+      0.56
+    ],
+    "Lantern": [
+      0.365,
+      -0.055,
+      0.687
+    ]
+  }
+}

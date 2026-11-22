@@ -1,0 +1,23 @@
+{
+  "triangles": 2846,
+  "vertices": 1425,
+  "materials": 4,
+  "non_manifold_edges": 0,
+  "bounds_godot": {
+    "x": [
+      -7.377519607543945,
+      7.839986324310303
+    ],
+    "y": [
+      -5.050000190734863,
+      0.0
+    ],
+    "z": [
+      -7.852653503417969,
+      7.68599796295166
+    ]
+  },
+  "flat_playable_half_extent": 5.82,
+  "source": "art_source/island_terrain_v2/island_v2.blend",
+  "geometry": "Single closed shell; exterior headlands are descending rock faces, never extra floor."
+}

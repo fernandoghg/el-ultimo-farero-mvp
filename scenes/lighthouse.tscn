@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/lighthouse.gd" id="1"]
+[ext_resource type="ArrayMesh" path="res://assets/lighthouse_tall/TowerArt.tres" id="2_tower"]
+[ext_resource type="ArrayMesh" path="res://assets/lighthouse_tall/LensArt.tres" id="3_lens"]
+
+[sub_resource type="BoxShape3D" id="Tower_shape"]
+size = Vector3(1.1, 3.2, 1.1)
+
+[sub_resource type="BoxShape3D" id="Beacon_shape"]
+size = Vector3(1.14, 0.7, 1.14)
+
+[node name="Lighthouse" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Tower" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1, 0)
+mesh = ExtResource("2_tower")
+
+[node name="Beacon" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.2, 0)
+mesh = ExtResource("3_lens")
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="TowerCollision" type="CollisionShape3D" parent="Body"]
+position = Vector3(0, 1.6, 0)
+shape = SubResource("Tower_shape")
+
+[node name="BeaconCollision" type="CollisionShape3D" parent="Body"]
+position = Vector3(0, 3.55, 0)
+shape = SubResource("Beacon_shape")
+
+[node name="Light" type="OmniLight3D" parent="."]
+position = Vector3(0, 3.484, 0)
+visible = false
+light_color = Color(1, 0.8, 0.3, 1)
+light_energy = 2.0
+omni_range = 4.0
+
+[node name="InteractionUI" type="CanvasLayer" parent="."]
+
+[node name="Prompt" type="Label" parent="InteractionUI"]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1

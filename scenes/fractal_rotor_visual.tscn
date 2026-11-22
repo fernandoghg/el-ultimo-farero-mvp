@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3]
+
+[sub_resource type="StandardMaterial3D" id="Bronze"]
+albedo_color = Color(0.43, 0.31, 0.17, 1)
+metallic = 0.55
+roughness = 0.68
+
+[sub_resource type="StandardMaterial3D" id="WornBronze"]
+albedo_color = Color(0.64, 0.48, 0.26, 1)
+metallic = 0.48
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="Patina"]
+albedo_color = Color(0.22, 0.39, 0.33, 1)
+metallic = 0.15
+roughness = 0.88
+
+[sub_resource type="TorusMesh" id="Handwheel"]
+material = SubResource("Bronze")
+inner_radius = 0.53
+outer_radius = 0.72
+rings = 32
+ring_segments = 8
+
+[sub_resource type="TorusMesh" id="RimBead"]
+material = SubResource("WornBronze")
+inner_radius = 0.639
+outer_radius = 0.675
+rings = 32
+ring_segments = 6
+
+[sub_resource type="CylinderMesh" id="Axle"]
+material = SubResource("Bronze")
+top_radius = 0.17
+bottom_radius = 0.17
+height = 0.32
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="AxleCap"]
+material = SubResource("WornBronze")
+top_radius = 0.105
+bottom_radius = 0.135
+height = 0.055
+radial_segments = 8
+
+[sub_resource type="BoxMesh" id="Spoke"]
+material = SubResource("Bronze")
+size = Vector3(0.12, 0.59, 0.105)
+
+[sub_resource type="CylinderMesh" id="IndexGrip"]
+material = SubResource("Patina")
+top_radius = 0.095
+bottom_radius = 0.132
+height = 0.20
+radial_segments = 6
+
+[node name="Rotor" type="Node3D"]
+
+[node name="Handwheel" type="MeshInstance3D" parent="."]
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Handwheel")
+
+[node name="FrontBead" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, 0.087)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("RimBead")
+
+[node name="RearBead" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.087)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("RimBead")
+
+[node name="Axle" type="MeshInstance3D" parent="."]
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Axle")
+
+[node name="FrontAxleCap" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, 0.154)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("AxleCap")
+
+[node name="RearAxleCap" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.154)
+rotation_degrees = Vector3(-90, 0, 0)
+mesh = SubResource("AxleCap")
+
+[node name="IndexSpoke" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.36, 0)
+mesh = SubResource("Spoke")
+
+[node name="IndexGrip" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.68, 0)
+mesh = SubResource("IndexGrip")

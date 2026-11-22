@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Language: es\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "INTRO_TITLE"
+msgstr "El último farero"
+
+msgid "INTRO_MISSION"
+msgstr "La luz del faro se ha extinguido. Eres el último farero: explora la isla y restaura sus tres mecanismos ancestrales. Después, vuelve al faro y devuelve la luz al horizonte."
+
+msgid "INTRO_CONTROLS"
+msgstr "WASD Moverse · Q/E Girar cámara · I Interactuar"
+
+msgid "INTRO_CONTINUE"
+msgstr "Intro · Comenzar"
+
+msgid "INTRO_RELEASE_KEYS"
+msgstr "Suelta los controles y pulsa Intro"
+
+msgid "ENDING_TITLE"
+msgstr "La luz ha regresado"
+
+msgid "ENDING_STORY"
+msgstr "Los antiguos mecanismos vuelven a latir y el faro ilumina de nuevo el horizonte.\n\nTu primera misión ha terminado. Más allá de la luz, el mundo aún guarda secretos."
+
+msgid "ENDING_REPLAY"
+msgstr "Volver a jugar"
+
+msgid "ENDING_EXIT"
+msgstr "Salir"
+
+msgid "LIGHTHOUSE_INTERACT"
+msgstr "Pulsa {key} para activar el faro"
+
+msgid "LIGHTHOUSE_PROGRESS"
+msgstr "Circuitos restaurados: {count} de 3"
+
+msgid "ROTOR_INSPECT"
+msgstr "Pulsa I para examinar el modelo"
+
+msgid "ROTOR_CONTROLS"
+msgstr "A/D: seleccionar · I: girar · Esc: volver al juego"
+
+msgid "ROTOR_COMPLETE"
+msgstr "Circuito completo · El eco del infinito se estabiliza"
+
+msgid "ROTOR_STABILIZED"
+msgstr "Estructura estabilizada · Esc: volver al juego"
+
+msgid "ROTOR_CLUE"
+msgstr "Conduce la luz hasta los cristales marcados"
+
+msgid "LOST_LIGHT_GUIDE"
+msgstr "La luz perdida · Conduce la luz hasta el cristal marcado"
+
+msgid "LOST_LIGHT_INTERACT"
+msgstr "Pulsa I para orientar el reflector"
+
+msgid "LOST_LIGHT_COMPLETE"
+msgstr "La luz perdida · Receptor iluminado"
+
+msgid "LOST_LIGHT_STABILIZED"
+msgstr "Reflector estabilizado"
+
+msgid "GUARDIAN_GUIDE"
+msgstr "Los espejos del guardián · Guía la luz por ambos espejos hasta el cristal"
+
+msgid "GUARDIAN_FIRST"
+msgstr "Pulsa I para orientar el espejo de una marca"
+
+msgid "GUARDIAN_SECOND"
+msgstr "Pulsa I para orientar el espejo de dos marcas"
+
+msgid "GUARDIAN_COMPLETE"
+msgstr "Los espejos del guardián · Receptor iluminado"
+
+msgid "GUARDIAN_STABILIZED"
+msgstr "Espejos estabilizados"

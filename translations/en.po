@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Language: en\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "INTRO_TITLE"
+msgstr "The Last Lighthouse Keeper"
+
+msgid "INTRO_MISSION"
+msgstr "The lighthouse has gone dark. You are its last keeper. Explore the island and restore its three ancient mechanisms. Then return to the lighthouse and bring light back to the horizon."
+
+msgid "INTRO_CONTROLS"
+msgstr "WASD Move · Q/E Rotate camera · I Interact"
+
+msgid "INTRO_CONTINUE"
+msgstr "Enter · Begin"
+
+msgid "INTRO_RELEASE_KEYS"
+msgstr "Release the controls and press Enter"
+
+msgid "ENDING_TITLE"
+msgstr "The light has returned"
+
+msgid "ENDING_STORY"
+msgstr "The ancient mechanisms stir again, and the lighthouse shines across the horizon once more.\n\nYour first mission is complete. Beyond the light, the world still holds secrets."
+
+msgid "ENDING_REPLAY"
+msgstr "Play again"
+
+msgid "ENDING_EXIT"
+msgstr "Quit"
+
+msgid "LIGHTHOUSE_INTERACT"
+msgstr "Press {key} to activate the lighthouse"
+
+msgid "LIGHTHOUSE_PROGRESS"
+msgstr "Circuits restored: {count} of 3"
+
+msgid "ROTOR_INSPECT"
+msgstr "Press I to examine the model"
+
+msgid "ROTOR_CONTROLS"
+msgstr "A/D: select · I: rotate · Esc: return to the game"
+
+msgid "ROTOR_COMPLETE"
+msgstr "Circuit complete · The Echo of Infinity is stabilizing"
+
+msgid "ROTOR_STABILIZED"
+msgstr "Structure stabilized · Esc: return to the game"
+
+msgid "ROTOR_CLUE"
+msgstr "Guide the light to the marked crystals"
+
+msgid "LOST_LIGHT_GUIDE"
+msgstr "The Lost Light · Guide the light to the marked crystal"
+
+msgid "LOST_LIGHT_INTERACT"
+msgstr "Press I to orient the reflector"
+
+msgid "LOST_LIGHT_COMPLETE"
+msgstr "The Lost Light · Receiver illuminated"
+
+msgid "LOST_LIGHT_STABILIZED"
+msgstr "Reflector stabilized"
+
+msgid "GUARDIAN_GUIDE"
+msgstr "The Guardian's Mirrors · Guide the light through both mirrors to the crystal"
+
+msgid "GUARDIAN_FIRST"
+msgstr "Press I to orient the mirror with one mark"
+
+msgid "GUARDIAN_SECOND"
+msgstr "Press I to orient the mirror with two marks"
+
+msgid "GUARDIAN_COMPLETE"
+msgstr "The Guardian's Mirrors · Receiver illuminated"
+
+msgid "GUARDIAN_STABILIZED"
+msgstr "Mirrors stabilized"

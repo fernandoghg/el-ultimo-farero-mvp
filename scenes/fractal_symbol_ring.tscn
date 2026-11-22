@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3]
+[sub_resource type="StandardMaterial3D" id="White"]
+albedo_color = Color(0.96, 0.94, 0.8, 1)
+shading_mode = 0
+[sub_resource type="TorusMesh" id="Shape"]
+inner_radius = 0.11
+outer_radius = 0.16
+rings = 16
+ring_segments = 8
+material = SubResource("White")
+[node name="Identity" type="Node3D"]
+
+[node name="Mark0" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, 0)
+rotation_degrees = Vector3(90, 0, 0)
+cast_shadow = 0
+mesh = SubResource("Shape")

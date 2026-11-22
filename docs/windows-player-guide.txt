@@ -1,0 +1,38 @@
+
+EL ÚLTIMO FARERO — MVP PARA WINDOWS
+
+Español
+
+1. Extrae todo el ZIP a una carpeta local. Abre ElUltimoFarero.exe y deja
+   ElUltimoFarero.pck en la misma carpeta. El juego funciona sin instalador,
+   permisos de administrador, Godot o conexión a Internet.
+2. Pulsa Intro para comenzar. WASD mueve al farero, Q/E gira la cámara e I
+   interactúa. En el pedestal de los rotores, A/D selecciona, I gira y Esc
+   vuelve a la exploración. Al terminar, elige Volver a jugar o Salir.
+3. El juego empieza en español. Para abrirlo en inglés, usa PowerShell
+   desde la carpeta extraída y ejecuta
+       .\ElUltimoFarero.exe -- --game-language en
+
+La versión está pensada para Windows x86-64 y abre una ventana de 1280 × 720.
+Forward+ usa Vulkan. Los requisitos mínimos del juego siguen sin medirse.
+Si falta el PCK, vuelve a extraer el ZIP completo. Si aparece un error
+gráfico, anota el mensaje y la versión del controlador. Windows puede
+mostrar un aviso de que el ejecutable está sin firmar.
+
+English
+
+1. Extract the entire ZIP to a local folder. Open ElUltimoFarero.exe and keep
+   ElUltimoFarero.pck in the same folder. The game runs without an installer,
+   administrator privileges, Godot or an internet connection.
+2. Press Enter to start. Use WASD to move, Q/E to rotate the camera and I to
+   interact. At the rotor pedestal, use A/D to select, I to turn and Esc to
+   return to exploration. At the ending, choose Play again or Quit.
+3. The game starts in Spanish. To switch to English, open PowerShell in the
+   extracted folder and run
+       .\ElUltimoFarero.exe -- --game-language en
+
+The game targets x86-64 Windows and opens in a 1280 × 720 window. Forward+
+uses Vulkan. The game's minimum hardware requirements are still unmeasured.
+If the PCK is missing, extract the entire ZIP again. If there is a graphics
+error, record the message and driver version. Windows may warn that the
+executable is unsigned.

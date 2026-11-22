@@ -1,0 +1,472 @@
+[gd_scene load_steps=53 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/guardian_mirrors.tscn" id="8_guardian"]
+
+[ext_resource type="PackedScene" path="res://scenes/lost_light.tscn" id="7_lost"]
+
+[ext_resource type="PackedScene" path="res://scenes/fractal_rotor.tscn" id="6_rotor"]
+
+[ext_resource type="PackedScene" path="res://scenes/bridge.tscn" id="5_bridge"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="3_main"]
+
+[ext_resource type="PackedScene" path="res://scenes/lighthouse.tscn" id="4_lighthouse"]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+
+[ext_resource type="Script" path="res://scripts/isometric_camera.gd" id="2_camera"]
+
+[ext_resource type="PackedScene" path="res://assets/island_v32/island.glb" id="10_art"]
+
+[ext_resource type="PackedScene" path="res://assets/island_v32/landing_cliff.glb" id="11_landing"]
+
+[ext_resource type="Shader" path="res://assets/island_v32/meadow.gdshader" id="12_meadow"]
+
+[ext_resource type="Shader" path="res://assets/island_v32/slate.gdshader" id="13_slate"]
+
+[ext_resource type="Shader" path="res://assets/island_v32/cloud_sea.gdshader" id="14_cloud"]
+
+[ext_resource type="Shader" path="res://assets/island_v32/cloud_layers.gdshader" id="15_banks"]
+
+[ext_resource type="Shader" path="res://assets/island_v32/cliffs.gdshader" id="16_rock"]
+
+[sub_resource type="BoxShape3D" id="Shape_ground"]
+size = Vector3(12, 0.4, 12)
+
+[sub_resource type="BoxShape3D" id="Shape_boundary_x"]
+size = Vector3(0.4, 4, 12)
+
+[sub_resource type="BoxShape3D" id="Shape_boundary_z"]
+size = Vector3(12, 4, 0.4)
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 1
+background_color = Color(0.55, 0.69, 0.72, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.77, 0.86, 0.97, 1)
+ambient_light_energy = 0.53
+reflected_light_source = 2
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 1.35
+ssao_intensity = 1.12
+ssao_detail = 0.52
+ssao_light_affect = 0.36
+glow_enabled = true
+glow_intensity = 0.28
+glow_bloom = 0.06
+glow_hdr_threshold = 1.22
+fog_enabled = true
+fog_light_color = Color(0.63, 0.75, 0.76, 1)
+fog_mode = 1
+fog_depth_begin = 20.0
+fog_depth_end = 42.0
+fog_density = 0.70
+
+[sub_resource type="StandardMaterial3D" id="Material_ground"]
+albedo_color = Color(0.25, 0.32, 0.35, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Material_center"]
+albedo_color = Color(0.9, 0.72, 0.32, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="Mesh_center"]
+material = SubResource("Material_center")
+size = Vector3(1.4, 1.4, 1.4)
+
+[sub_resource type="StandardMaterial3D" id="Material_x"]
+albedo_color = Color(0.85, 0.2, 0.16, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="Mesh_x"]
+material = SubResource("Material_x")
+size = Vector3(0.8, 2.4, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="Material_z"]
+albedo_color = Color(0.2, 0.45, 0.9, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="Mesh_z"]
+material = SubResource("Material_z")
+size = Vector3(1.6, 0.6, 0.8)
+
+[sub_resource type="BoxMesh" id="Mesh_step"]
+material = SubResource("Material_ground")
+size = Vector3(2, 0.8, 2)
+
+[sub_resource type="BoxShape3D" id="Shape_center"]
+size = Vector3(1.4, 1.4, 1.4)
+
+[sub_resource type="BoxShape3D" id="Shape_x"]
+size = Vector3(0.8, 2.4, 0.8)
+
+[sub_resource type="BoxShape3D" id="Shape_z"]
+size = Vector3(1.6, 0.6, 0.8)
+
+[sub_resource type="BoxShape3D" id="Shape_step"]
+size = Vector3(2, 0.8, 2)
+
+[sub_resource type="BoxShape3D" id="Boundary_short"]
+size = Vector3(0.4, 4, 2)
+
+[sub_resource type="BoxShape3D" id="Boundary_long"]
+size = Vector3(0.4, 4, 8)
+
+[sub_resource type="BoxMesh" id="Destination_mesh"]
+material = SubResource("Material_ground")
+size = Vector3(6, 0.4, 6)
+
+[sub_resource type="BoxShape3D" id="Destination_floor"]
+size = Vector3(6, 0.4, 6)
+
+[sub_resource type="BoxShape3D" id="Destination_wall_x"]
+size = Vector3(0.4, 4, 6)
+
+[sub_resource type="BoxShape3D" id="Destination_wall_z"]
+size = Vector3(6, 4, 0.4)
+
+[sub_resource type="ShaderMaterial" id="Material_meadow"]
+shader = ExtResource("12_meadow")
+
+[sub_resource type="ShaderMaterial" id="Material_bridge"]
+shader = ExtResource("13_slate")
+shader_parameter/slate = Color(0.39, 0.38, 0.31, 1)
+shader_parameter/limestone = Color(0.61, 0.54, 0.40, 1)
+shader_parameter/course_size = Vector2(0.51, 0.23)
+
+[sub_resource type="ShaderMaterial" id="Material_slate"]
+shader = ExtResource("13_slate")
+
+[sub_resource type="StandardMaterial3D" id="Material_rail"]
+albedo_color = Color(0.35, 0.33, 0.26, 1)
+roughness = 0.83
+
+[sub_resource type="ShaderMaterial" id="Stone"]
+shader = ExtResource("16_rock")
+
+[sub_resource type="FastNoiseLite" id="Billows"]
+seed = 76102
+frequency = 0.013
+fractal_octaves = 4
+fractal_gain = 0.48
+domain_warp_enabled = true
+domain_warp_amplitude = 21.0
+domain_warp_frequency = 0.007
+domain_warp_fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="CloudField"]
+width = 512
+height = 512
+seamless = true
+noise = SubResource("Billows")
+
+[sub_resource type="ShaderMaterial" id="FarClouds"]
+shader = ExtResource("14_cloud")
+shader_parameter/deep = Color(0.27, 0.42, 0.54, 1)
+shader_parameter/haze = Color(0.53, 0.65, 0.71, 1)
+shader_parameter/cloud = Color(0.65, 0.73, 0.76, 1)
+shader_parameter/cloud_map = SubResource("CloudField")
+
+[sub_resource type="ShaderMaterial" id="MiddleBanks"]
+render_priority = -2
+shader = ExtResource("15_banks")
+shader_parameter/cloud_map = SubResource("CloudField")
+shader_parameter/field_scale = Vector2(0.013, 0.010)
+shader_parameter/field_offset = Vector2(0.71, 0.38)
+shader_parameter/coverage = Vector2(0.37, 0.73)
+shader_parameter/opacity = 0.79
+shader_parameter/cloud_shadow = Color(0.57, 0.68, 0.72, 1)
+shader_parameter/cloud_light = Color(0.94, 0.91, 0.82, 1)
+
+[sub_resource type="ShaderMaterial" id="HighWisps"]
+render_priority = -1
+shader = ExtResource("15_banks")
+shader_parameter/cloud_map = SubResource("CloudField")
+shader_parameter/field_scale = Vector2(0.016, 0.025)
+shader_parameter/field_offset = Vector2(0.32, 0.66)
+shader_parameter/coverage = Vector2(0.52, 0.78)
+shader_parameter/opacity = 0.68
+shader_parameter/cloud_shadow = Color(0.63, 0.73, 0.77, 1)
+shader_parameter/cloud_light = Color(0.98, 0.91, 0.79, 1)
+
+[sub_resource type="PlaneMesh" id="FarPlane"]
+material = SubResource("FarClouds")
+size = Vector2(200, 200)
+
+[sub_resource type="PlaneMesh" id="MiddlePlane"]
+material = SubResource("MiddleBanks")
+size = Vector2(160, 160)
+
+[sub_resource type="PlaneMesh" id="HighPlane"]
+material = SubResource("HighWisps")
+size = Vector2(140, 140)
+
+[sub_resource type="StandardMaterial3D" id="PatinatedFrame"]
+albedo_color = Color(0.39, 0.45, 0.43, 1)
+metallic = 0.11
+roughness = 0.88
+
+[sub_resource type="StandardMaterial3D" id="PatinatedMast"]
+albedo_color = Color(0.37, 0.43, 0.43, 1)
+roughness = 0.94
+
+[node name="Main" type="Node3D"]
+script = ExtResource("3_main")
+
+[node name="Lighthouse" parent="." node_paths=PackedStringArray("player", "restoration") instance=ExtResource("4_lighthouse")]
+position = Vector3(3, 0, -3)
+player = NodePath("../Player")
+restoration = NodePath("..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_main")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-49, -38, 0)
+light_color = Color(1, 0.86, 0.70, 1)
+light_energy = 1.20
+shadow_enabled = true
+light_angular_distance = 4.0
+directional_shadow_max_distance = 36.0
+shadow_blur = 1.7
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.2, 0)
+
+[node name="Body" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/Body"]
+shape = SubResource("Shape_ground")
+
+[node name="Boundary" type="StaticBody3D" parent="."]
+
+[node name="Left" type="CollisionShape3D" parent="Boundary"]
+position = Vector3(-6, 2, 0)
+shape = SubResource("Shape_boundary_x")
+
+[node name="Right" type="CollisionShape3D" parent="Boundary"]
+position = Vector3(6, 2, 2)
+shape = SubResource("Boundary_long")
+
+[node name="RightNorth" type="CollisionShape3D" parent="Boundary"]
+position = Vector3(6, 2, -5)
+shape = SubResource("Boundary_short")
+
+[node name="Front" type="CollisionShape3D" parent="Boundary"]
+position = Vector3(0, 2, 6)
+shape = SubResource("Shape_boundary_z")
+
+[node name="Back" type="CollisionShape3D" parent="Boundary"]
+position = Vector3(0, 2, -6)
+shape = SubResource("Shape_boundary_z")
+
+[node name="Center" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.7, 0)
+mesh = SubResource("Mesh_center")
+visible = false
+
+[node name="Body" type="StaticBody3D" parent="Center"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Center/Body"]
+shape = SubResource("Shape_center")
+
+[node name="PositiveX" type="MeshInstance3D" parent="."]
+position = Vector3(3, 1.2, 0)
+mesh = SubResource("Mesh_x")
+visible = false
+
+[node name="Body" type="StaticBody3D" parent="PositiveX"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PositiveX/Body"]
+shape = SubResource("Shape_x")
+
+[node name="PositiveZ" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.3, 3)
+mesh = SubResource("Mesh_z")
+visible = false
+
+[node name="Body" type="StaticBody3D" parent="PositiveZ"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PositiveZ/Body"]
+shape = SubResource("Shape_z")
+
+[node name="RaisedStep" type="MeshInstance3D" parent="."]
+position = Vector3(-3, 0.4, -2)
+mesh = SubResource("Mesh_step")
+visible = false
+
+[node name="Body" type="StaticBody3D" parent="RaisedStep"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RaisedStep/Body"]
+shape = SubResource("Shape_step")
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_player")]
+position = Vector3(-2, 0.1, 2)
+camera = NodePath("../Camera")
+
+[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+position = Vector3(10, 10, 10)
+rotation_degrees = Vector3(-35.264, 45, 0)
+projection = 1
+current = true
+size = 18.0
+near = 0.1
+far = 100.0
+script = ExtResource("2_camera")
+target = NodePath("../Player")
+
+[node name="Bridge" parent="." instance=ExtResource("5_bridge")]
+position = Vector3(9, 0, -3)
+
+[node name="Destination" type="MeshInstance3D" parent="."]
+position = Vector3(15, -0.2, -3)
+mesh = SubResource("Destination_mesh")
+visible = false
+
+[node name="Body" type="StaticBody3D" parent="Destination"]
+
+[node name="Floor" type="CollisionShape3D" parent="Destination/Body"]
+shape = SubResource("Destination_floor")
+
+[node name="Boundary" type="StaticBody3D" parent="Destination"]
+position = Vector3(0, 0.2, 0)
+
+[node name="East" type="CollisionShape3D" parent="Destination/Boundary"]
+position = Vector3(3, 2, 0)
+shape = SubResource("Destination_wall_x")
+
+[node name="North" type="CollisionShape3D" parent="Destination/Boundary"]
+position = Vector3(0, 2, -3)
+shape = SubResource("Destination_wall_z")
+
+[node name="South" type="CollisionShape3D" parent="Destination/Boundary"]
+position = Vector3(0, 2, 3)
+shape = SubResource("Destination_wall_z")
+
+[node name="WestNorth" type="CollisionShape3D" parent="Destination/Boundary"]
+position = Vector3(-3, 2, -2)
+shape = SubResource("Boundary_short")
+
+[node name="WestSouth" type="CollisionShape3D" parent="Destination/Boundary"]
+position = Vector3(-3, 2, 2)
+shape = SubResource("Boundary_short")
+
+[node name="FractalRotor" parent="." node_paths=PackedStringArray("player", "normal_camera") instance=ExtResource("6_rotor")]
+player = NodePath("../Player")
+normal_camera = NodePath("../Camera")
+
+[node name="LostLight" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_lost")]
+player = NodePath("../Player")
+
+[node name="GuardianMirrors" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_guardian")]
+player = NodePath("../Player")
+
+[node name="SeaOfClouds" type="MeshInstance3D" parent="."]
+position = Vector3(0, -24.0, 0)
+cast_shadow = 0
+mesh = SubResource("FarPlane")
+
+[node name="IslandArt" parent="." instance=ExtResource("10_art")]
+
+[node name="GrassCap" parent="IslandArt"]
+material_override = SubResource("Material_meadow")
+
+[node name="LandingCap" parent="IslandArt"]
+material_override = SubResource("Material_meadow")
+
+[node name="ErodedRock" parent="." instance=ExtResource("11_landing")]
+
+[node name="LandingCliff" parent="ErodedRock"]
+material_override = SubResource("Stone")
+
+[node name="CloudBanks" type="MeshInstance3D" parent="."]
+position = Vector3(0, -15.3, 0)
+cast_shadow = 0
+mesh = SubResource("MiddlePlane")
+
+[node name="CloudWisps" type="MeshInstance3D" parent="."]
+position = Vector3(0, -8.7, 0)
+cast_shadow = 0
+mesh = SubResource("HighPlane")
+
+[node name="WarmLighthouseFill" type="OmniLight3D" parent="."]
+position = Vector3(4.5, 4.6, -1.2)
+light_color = Color(1, 0.84, 0.66, 1)
+light_energy = 0.38
+light_specular = 0.18
+omni_range = 5.5
+
+[node name="Segment0" parent="Bridge/Segments"]
+material_override = SubResource("Material_bridge")
+
+[node name="Segment1" parent="Bridge/Segments"]
+material_override = SubResource("Material_bridge")
+
+[node name="Segment2" parent="Bridge/Segments"]
+material_override = SubResource("Material_bridge")
+
+[node name="Segment3" parent="Bridge/Segments"]
+material_override = SubResource("Material_bridge")
+
+[node name="Segment4" parent="Bridge/Segments"]
+material_override = SubResource("Material_bridge")
+
+[node name="Segment5" parent="Bridge/Segments"]
+material_override = SubResource("Material_bridge")
+
+[node name="Mesh" parent="Bridge/Gates/Entrance"]
+material_override = SubResource("Material_slate")
+
+[node name="Mesh" parent="Bridge/Gates/Exit"]
+material_override = SubResource("Material_slate")
+
+[node name="NorthMesh" parent="Bridge/Rails"]
+material_override = SubResource("Material_rail")
+
+[node name="SouthMesh" parent="Bridge/Rails"]
+material_override = SubResource("Material_rail")
+
+[node name="Mesh" parent="FractalRotor/Pedestal"]
+material_override = SubResource("Material_slate")
+
+[node name="Foundation" parent="FractalRotor/Monument"]
+material_override = SubResource("Material_slate")
+
+[node name="Plinth" parent="FractalRotor/Monument"]
+material_override = SubResource("Material_slate")
+
+[node name="Mast" parent="FractalRotor/Monument"]
+material_override = SubResource("PatinatedMast")
+
+[node name="Frame0" parent="FractalRotor/Monument"]
+material_override = SubResource("PatinatedFrame")
+
+[node name="Frame1" parent="FractalRotor/Monument"]
+material_override = SubResource("PatinatedFrame")
+
+[node name="Frame2" parent="FractalRotor/Monument"]
+material_override = SubResource("PatinatedFrame")
+
+[node name="Wall" parent="GuardianMirrors"]
+material_override = SubResource("Material_slate")
+
+[node name="Cap" parent="GuardianMirrors/Wall"]
+material_override = SubResource("Material_slate")
+
+[node name="Inert" parent="LostLight"]
+material_override = SubResource("Material_slate")
+
+[connection signal="activated" from="Lighthouse" to="Bridge" method="reconstruct"]
+
+[editable path="Bridge"]
+
+[editable path="FractalRotor"]
+
+[editable path="LostLight"]
+
+[editable path="GuardianMirrors"]
+
+[editable path="IslandArt"]
+
+[editable path="ErodedRock"]

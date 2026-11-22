@@ -1,0 +1,173 @@
+[gd_scene load_steps=15 format=3]
+[ext_resource type="Script" path="res://scripts/fractal_circuit.gd" id="1"]
+[sub_resource type="StandardMaterial3D" id="Metal"]
+albedo_color = Color(0.3, 0.36, 0.4, 1)
+roughness = 0.9
+[sub_resource type="StandardMaterial3D" id="Energy"]
+albedo_color = Color(1, 0.76, 0.22, 1)
+shading_mode = 0
+emission_enabled = true
+emission = Color(0.7, 0.38, 0.06, 1)
+[sub_resource type="StandardMaterial3D" id="Goal"]
+albedo_color = Color(1, 0.78, 0.28, 1)
+shading_mode = 0
+emission_enabled = true
+emission = Color(0.6, 0.35, 0.08, 1)
+[sub_resource type="TorusMesh" id="Socket"]
+material = SubResource("Metal")
+inner_radius = 0.045
+outer_radius = 0.075
+rings = 16
+ring_segments = 8
+[sub_resource type="SphereMesh" id="Receiving"]
+material = SubResource("Energy")
+radius = 0.042
+height = 0.084
+radial_segments = 12
+rings = 6
+[sub_resource type="SphereMesh" id="Core"]
+material = SubResource("Energy")
+radius = 0.055
+height = 0.11
+radial_segments = 12
+rings = 6
+[sub_resource type="TorusMesh" id="SourceFrame"]
+material = SubResource("Metal")
+inner_radius = 0.075
+outer_radius = 0.1
+rings = 16
+ring_segments = 8
+[sub_resource type="TorusMesh" id="Halo"]
+material = SubResource("Goal")
+inner_radius = 0.11
+outer_radius = 0.14
+rings = 24
+ring_segments = 8
+[sub_resource type="StandardMaterial3D" id="CrystalIdle"]
+albedo_color = Color(0.27, 0.4, 0.5, 1)
+shading_mode = 0
+[sub_resource type="BoxMesh" id="Crystal"]
+material = SubResource("CrystalIdle")
+size = Vector3(0.165, 0.165, 0.065)
+[sub_resource type="StandardMaterial3D" id="CrystalBorder"]
+albedo_color = Color(0.78, 0.85, 0.9, 1)
+shading_mode = 0
+[sub_resource type="BoxMesh" id="CrystalEdge"]
+material = SubResource("CrystalBorder")
+size = Vector3(0.19, 0.018, 0.035)
+[sub_resource type="BoxMesh" id="Beam"]
+material = SubResource("Energy")
+size = Vector3(1, 0.045, 0.035)
+
+[node name="Circuit" type="Node3D"]
+position = Vector3(0, 0, 0.24)
+script = ExtResource("1")
+[node name="Source" type="Node3D" parent="."]
+[node name="Frame" type="MeshInstance3D" parent="Source"]
+rotation_degrees = Vector3(90, 0, 0)
+cast_shadow = 0
+mesh = SubResource("SourceFrame")
+[node name="Live" type="MeshInstance3D" parent="Source"]
+cast_shadow = 0
+mesh = SubResource("Core")
+[node name="Path" type="Node3D" parent="."]
+[node name="Shaft" type="MeshInstance3D" parent="Path"]
+position = Vector3(0, 0.46, 0)
+rotation_degrees = Vector3(0, 0, 90)
+scale = Vector3(0.92, 1, 1)
+cast_shadow = 0
+mesh = SubResource("Beam")
+
+[node name="Terminal0" type="Node3D" parent="."]
+position = Vector3(0, 0.92, 0)
+[node name="Socket" type="MeshInstance3D" parent="Terminal0"]
+rotation_degrees = Vector3(90, 0, 0)
+cast_shadow = 0
+mesh = SubResource("Socket")
+[node name="Receiving" type="MeshInstance3D" parent="Terminal0"]
+rotation_degrees = Vector3(0, 0, 45)
+cast_shadow = 0
+mesh = SubResource("Receiving")
+
+[node name="Terminal1" type="Node3D" parent="."]
+position = Vector3(-0.7967433714816836, -0.4599999999999998, 0)
+[node name="Socket" type="MeshInstance3D" parent="Terminal1"]
+rotation_degrees = Vector3(90, 0, 0)
+cast_shadow = 0
+mesh = SubResource("Socket")
+[node name="Receiving" type="MeshInstance3D" parent="Terminal1"]
+rotation_degrees = Vector3(0, 0, 45)
+cast_shadow = 0
+mesh = SubResource("Receiving")
+
+[node name="Terminal2" type="Node3D" parent="."]
+position = Vector3(0.7967433714816834, -0.4600000000000004, 0)
+[node name="Socket" type="MeshInstance3D" parent="Terminal2"]
+rotation_degrees = Vector3(90, 0, 0)
+cast_shadow = 0
+mesh = SubResource("Socket")
+[node name="Receiving" type="MeshInstance3D" parent="Terminal2"]
+rotation_degrees = Vector3(0, 0, 45)
+cast_shadow = 0
+mesh = SubResource("Receiving")
+
+[node name="Target" type="Node3D" parent="."]
+visible = false
+[node name="Crystal" type="MeshInstance3D" parent="Target"]
+rotation_degrees = Vector3(0, 0, 45)
+cast_shadow = 0
+mesh = SubResource("Crystal")
+[node name="Frame" type="Node3D" parent="Target"]
+rotation_degrees = Vector3(0, 0, 45)
+[node name="Pulse" type="Node3D" parent="Target"]
+visible = false
+rotation_degrees = Vector3(0, 0, 45)
+[node name="Edge0" type="MeshInstance3D" parent="Target/Frame"]
+position = Vector3(0, 0.095, 0.045)
+rotation_degrees = Vector3(0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("CrystalEdge")
+[node name="Edge1" type="MeshInstance3D" parent="Target/Frame"]
+position = Vector3(0, -0.095, 0.045)
+rotation_degrees = Vector3(0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("CrystalEdge")
+[node name="Edge2" type="MeshInstance3D" parent="Target/Frame"]
+position = Vector3(-0.095, 0, 0.045)
+rotation_degrees = Vector3(0, 0, 90)
+cast_shadow = 0
+mesh = SubResource("CrystalEdge")
+[node name="Edge3" type="MeshInstance3D" parent="Target/Frame"]
+position = Vector3(0.095, 0, 0.045)
+rotation_degrees = Vector3(0, 0, 90)
+cast_shadow = 0
+mesh = SubResource("CrystalEdge")
+[node name="Edge0" type="MeshInstance3D" parent="Target/Pulse"]
+material_override = SubResource("Energy")
+position = Vector3(0, 0.095, 0.045)
+rotation_degrees = Vector3(0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("CrystalEdge")
+[node name="Edge1" type="MeshInstance3D" parent="Target/Pulse"]
+material_override = SubResource("Energy")
+position = Vector3(0, -0.095, 0.045)
+rotation_degrees = Vector3(0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("CrystalEdge")
+[node name="Edge2" type="MeshInstance3D" parent="Target/Pulse"]
+material_override = SubResource("Energy")
+position = Vector3(-0.095, 0, 0.045)
+rotation_degrees = Vector3(0, 0, 90)
+cast_shadow = 0
+mesh = SubResource("CrystalEdge")
+[node name="Edge3" type="MeshInstance3D" parent="Target/Pulse"]
+material_override = SubResource("Energy")
+position = Vector3(0.095, 0, 0.045)
+rotation_degrees = Vector3(0, 0, 90)
+cast_shadow = 0
+mesh = SubResource("CrystalEdge")
+[node name="Completion" type="MeshInstance3D" parent="."]
+visible = false
+rotation_degrees = Vector3(90, 0, 0)
+cast_shadow = 0
+mesh = SubResource("Halo")

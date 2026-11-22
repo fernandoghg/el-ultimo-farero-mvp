@@ -1,0 +1,22 @@
+# Godot 4: generated import cache and editor state.
+.godot/
+
+# Local editor recovery and temporary files.
+*.tmp
+*.temp
+*.bak
+*~
+*.swp
+*.swo
+
+# Generated builds/exports; keep source resources and export presets tracked.
+/build/
+/builds/
+/dist/
+/exports/
+export_credentials.cfg
+
+# OS metadata.
+Thumbs.db
+Desktop.ini
+.DS_Store
